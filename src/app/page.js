@@ -1,17 +1,15 @@
 'use client'
 import { useEffect } from 'react'
 import HeaderComp from "@/components/homePage/HeaderComp";
-import { handleLogin } from "@/utils/requests/authReq";
 import { useCookies } from 'react-cookie';
-import { getProfileData } from '@/utils/requests/profileReq';
 import useProfiledata from '@/customHook/useProfiledata';
+import TopContainer from '@/components/homePage/TopContainer';
 
 export default function Home() {
   const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
   const { fillUserState } = useProfiledata()
 
   async function handleUserLogin() {
-    await handleLogin()
     fillUserState(cookies.access_token)
   }
 
@@ -23,8 +21,9 @@ export default function Home() {
     }
   }, [])
   return (
-    <div>
+    <div className='flex flex-col w-full bg-zinc-900 px-5 my-2 rounded-md items-center gap-20'>
       <HeaderComp />
+      <TopContainer />
     </div>
   )
 }

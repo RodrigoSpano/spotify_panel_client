@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body >
         <NextUIProvider>
-          <div className='flex h-screen gap-10'>
+          <div className='flex h-screen bg-black text-white gap-3 px-2'>
             {path.startsWith('/auth') ? null : <Sidebar />}
             {children}
           </div>

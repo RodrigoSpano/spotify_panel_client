@@ -8,7 +8,7 @@ const HeaderComp = () => {
   const {profile} = useProfile()
   return (
     <div className='flex items-center mt-10 gap-10 '>
-      <Image src={profile?.image} alt='rodrigo' className='rounded-[9999px]' height='300' width={'300'} />
+      {profile.image ? <Image src={profile?.image} alt='profile image' className='rounded-[9999px]' height='300' width={'300'} />:null}
       <UserInfo profile={profile} />
     </div>
   )
