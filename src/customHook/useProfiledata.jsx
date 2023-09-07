@@ -26,6 +26,7 @@ const useProfiledata = () => {
       album: el.album,
       artists: el.artists,
       explicit: el.explicit,
+      external_url: el.external_urls.spotify,
       href: el.href,
       id: el.id,
       name: el.name
@@ -38,7 +39,6 @@ const useProfiledata = () => {
       name: el.name,
       images: el.images
     }))
-    
     await fillArtistList(modifiedTopArtists)
     await fillTrackList(modifiedTopTracks)
   }

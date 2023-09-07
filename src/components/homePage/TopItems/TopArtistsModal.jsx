@@ -1,8 +1,9 @@
 import React from "react";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, ScrollShadow} from "@nextui-org/react";
 import ArtistCard from "./ArtistCard";
+import TrackCard from "../topTracks/TrackCard";
 
-export default function App({artists}) {
+export default function TopArtistsModal({array, type}) {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   return (
@@ -12,11 +13,11 @@ export default function App({artists}) {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Your Favorites Artists</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1 capitalize">{type === 'tracks' ? 'Your favorites songs' :'Your Favorites Artists'}</ModalHeader>
               <ModalBody >
               <ScrollShadow hideScrollBar className="w-[300px] h-[400px] flex flex-col items-start gap-3 pl-4">
                {
-                 artists.length > 0 ? artists.map((el, i) => <ArtistCard artist={el} position={++i} key={el.id} />) : null
+                 array.length > 0 ? array.map((el, i) => type === 'tracks' ? <TrackCard position={++i} track={el} key={el.id} /> : <ArtistCard artist={el} position={++i} key={el.id} />) : null
                  
                 }
                 </ScrollShadow>

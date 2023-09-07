@@ -13,7 +13,7 @@ const TopArtists = () => {
           artistsList.length > 0 ? artistsList.slice(0,5).map((el, index) => <ArtistCard artist={el} position={++index} key={el.id} />) : null
         }
       </div>
-        <TopArtistsModal artists={artistsList} />
+        <TopArtistsModal type={'artists'} array={artistsList} />
     </div>
   )
 }
