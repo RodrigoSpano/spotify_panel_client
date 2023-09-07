@@ -26,3 +26,12 @@ export const getTopTracks = async (token) => {
     console.log(error)
   }
 }
+
+export const getUserPlaylists = async (token) => {
+  try {
+    const { data } = await axios(`/profile/playlists?token=${token}`)
+    return data
+  } catch (error) {
+    console.log(error)
+  }
+}

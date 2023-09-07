@@ -1,11 +1,13 @@
 'use client'
-import { getProfileData, getTopArtists, getTopTracks } from '@/utils/requests/profileReq';
+import { getProfileData, getTopArtists, getTopTracks, getUserPlaylists } from '@/utils/requests/profileReq';
 import { useProfile } from '@/zustand/useProfileStore';
 import { useProfileTop } from '@/zustand/useTopItems';
+import { useUserPlaylists } from '@/zustand/useUserPlaylists';
 
 const useProfiledata = () => {
   const {fillProfileData} = useProfile()
   const {fillArtistList, fillTrackList} = useProfileTop()
+  const {fillPlaylists} = useUserPlaylists()
   
   const fillUserState = async (token) => {
     const data = await getProfileData(token)
@@ -43,7 +45,12 @@ const useProfiledata = () => {
     await fillTrackList(modifiedTopTracks)
   }
 
-  return {fillUserState, fillUserTop}
+  const fillUserPlaylists = async (token) => {
+    const {items} = await getUserPlaylists(token)
+    await fillPlaylists(items)
+  }
+
+  return {fillUserState, fillUserTop, fillUserPlaylists}
 }
 
 export default useProfiledata

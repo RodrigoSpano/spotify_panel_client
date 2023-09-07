@@ -9,7 +9,7 @@ const initialState = {
 
 export const useProfile = create((set) => ({
   profile: initialState,
-  fillProfileData: (data) => set((state) => ({ profile: data })),
+  fillProfileData: (data) => set(() => ({ profile: data })),
   removeProfileData: () => set({ profile: initialState }),
   updateProfileData: (data) => set((state) => ({ profile: { ...state, data } }))
 }))

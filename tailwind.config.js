@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        tooltip: '0px 2px 5px 0px #000'
+      },
       colors: {
         spoty: '#81b71a',
         'strong-green': '#18c964'
