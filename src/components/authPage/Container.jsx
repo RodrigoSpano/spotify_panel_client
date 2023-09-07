@@ -7,7 +7,6 @@ const Container = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
   const searchParams = useSearchParams()
   const router = useRouter()
-  console.log('hola')
   
   useEffect(() => {
     async function settingCookie(){

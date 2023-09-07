@@ -5,7 +5,7 @@ import axios from 'axios';
 import Sidebar from '@/components/sidebar/Sidebar';
 import { usePathname } from 'next/navigation';
 
-axios.defaults.baseURL = 'http://localhost:8080/api'
+axios.defaults.baseURL = process.env.BACK_URI
 
 export default function RootLayout({ children }) {
   const path = usePathname()
