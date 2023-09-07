@@ -21,7 +21,7 @@ export default function Home() {
     }
   }, [])
   return (
-    <div className='flex flex-col w-full min-h-screen bg-zinc-900 px-5 my-2 py-10 lg:py-0 rounded-md items-center gap-20'>
+    <div className='flex flex-col w-full bg-zinc-900 my-2 py-10 lg:py-0 rounded-md items-center gap-20'>
       <HeaderComp />
       <TopContainer />
     </div>

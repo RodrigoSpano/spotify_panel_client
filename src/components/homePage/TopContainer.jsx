@@ -15,7 +15,7 @@ const TopContainer = () => {
     fillUserTop(cookies.access_token)
   }, [])
   return (
-    <div className='select-none w-full flex flex-col lg:flex-row flex-wrap items-center gap-10 lg:gap-0 lg:justify-evenly'>
+    <div className='select-none w-full flex flex-col lg:flex-row flex-wrap items-center gap-10 lg:gap-0 lg:justify-evenly pb-5'>
       {
         !artistsList || !tracksList ? <span>loading</span> : <>
           <TopArtists />

@@ -23,9 +23,6 @@ export default function TopArtistsModal({array, type}) {
                 </ScrollShadow>
               </ModalBody>
               <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
-                  Close
-                </Button>
               </ModalFooter>
             </>
           )}
