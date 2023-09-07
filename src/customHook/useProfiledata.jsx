@@ -30,10 +30,11 @@ const useProfiledata = () => {
       id: el.id,
       name: el.name
     }))
-
+    
     const modifiedTopArtists = await topArtists?.items?.map(el => ({
       id: el.id,
       href: el.href,
+      external_url: el.external_urls.spotify,
       name: el.name,
       images: el.images
     }))
