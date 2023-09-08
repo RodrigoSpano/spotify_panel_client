@@ -21,7 +21,7 @@ const CloseContainer = ({isOpen}) => {
                 <span className='text-background/60 capitalize'> {el.type} • {el.owner.display_name}</span>
               </div>
             }>
-              <Image onClick={() => handleClick(el.external_urls.spotify)} src={el.images[0].url} alt={el.name} key={el.id} className='hover:blur-sm transition-all ease-linear duration-250 rounded-md cursor-pointer' width={60} height={60} />
+              <Image onClick={() => handleClick(el.external_urls.spotify)} src={el.images[0].url} alt={el.name} key={el.id} className='hover:blur-[2px] transition-all ease-linear duration-250 rounded-md cursor-pointer' width={60} height={60} />
             </Tooltip>
             </m.div>
         )) : 'loding'
