@@ -6,7 +6,7 @@ import { useCookies } from 'react-cookie'
 
 const usePlaylistHook = () => {
   const [cookies] = useCookies(['access_token'])
-  const {fillDetail, fillTracks} = useUserPlaylists()
+  const {fillDetail, fillTracks, orderTracks} = useUserPlaylists()
   const [loader, setLoader] = useState(false)
   
   const handlePlaylistTracks = async (id) => {
@@ -27,7 +27,12 @@ const usePlaylistHook = () => {
     await fillTracks(modifiedTrack)
     setLoader(false)
   }
-  return {handlePlaylistTracks, loader}
+
+  const handleOrderTracks = async (type) => {
+    await orderTracks(type)
+  }
+
+  return {handlePlaylistTracks, handleOrderTracks, loader}
 }
 
 export default usePlaylistHook
