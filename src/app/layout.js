@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
   const path = usePathname()
   return (
     <html lang="en">
-      <body >
+      <body  >
         <NextUIProvider>
           <div className='flex min-h-screen bg-black text-white gap-3 px-2'>
             {path.startsWith('/auth') ? null : <Sidebar />}

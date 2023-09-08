@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        kanit: 'Kanit, sans-serif'
+      },
       boxShadow: {
         tooltip: '0px 2px 5px 0px #000'
       },

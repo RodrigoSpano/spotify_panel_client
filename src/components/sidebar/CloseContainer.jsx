@@ -1,13 +1,19 @@
 import { useUserPlaylists } from '@/zustand/useUserPlaylists'
-import { Tooltip } from '@nextui-org/react'
+import { Tooltip, useDisclosure } from '@nextui-org/react'
 import Image from 'next/image'
 import React from 'react'
 import {motion as m} from 'framer-motion'
+import PlaylistModal from './modal/PlaylistModal'
+import usePlaylistHook from '@/customHook/usePlaylistHook'
 
 const CloseContainer = ({isOpen}) => {
   const {playlists} = useUserPlaylists()
-  const handleClick = (uri) => {
-    window.open(uri, '_blank')
+  const {isOpen: openModal, onOpen, onOpenChange} = useDisclosure();
+  const {handlePlaylistTracks} = usePlaylistHook()
+
+  const handlePlaylistInfo = async (id) => {
+    await handlePlaylistTracks(id)
+    onOpen()
   }
   
   return (
@@ -21,8 +27,9 @@ const CloseContainer = ({isOpen}) => {
                 <span className='text-background/60 capitalize'> {el.type} • {el.owner.display_name}</span>
               </div>
             }>
-              <Image onClick={() => handleClick(el.external_urls.spotify)} src={el.images[0].url} alt={el.name} key={el.id} className='hover:blur-[2px] transition-all ease-linear duration-250 rounded-md cursor-pointer' width={60} height={60} />
+              <Image onClick={()=>handlePlaylistInfo(el.id)} src={el.images[0].url} alt={el.name} key={el.id} className='hover:blur-[2px] transition-all ease-linear duration-250 rounded-md cursor-pointer' width={60} height={60} />
             </Tooltip>
+            <PlaylistModal isOpen={openModal} onOpenChange={onOpenChange} playlist={el} />
             </m.div>
         )) : 'loding'
       }

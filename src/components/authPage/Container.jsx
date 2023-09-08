@@ -10,7 +10,7 @@ const Container = () => {
   
   useEffect(() => {
     async function settingCookie(){
-      await setCookie('access_token', searchParams.get('token'))
+      await setCookie('access_token', searchParams.get('token'), {path: '/', maxAge: 3600})
       router.push('/')
     }
     settingCookie()
