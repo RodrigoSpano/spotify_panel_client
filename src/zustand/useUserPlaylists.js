@@ -2,17 +2,17 @@ import { create } from "zustand";
 
 export const useUserPlaylists = create((set) => ({
   playlists: [],
-  playlistsBackup: [],
   playlistDetail: {},
   playlistTracks: [],
-  fillPlaylists: (data) => set(() => ({ playlists: data, playlistsBackup: data })),
+  tracksCopy: [],
+  fillPlaylists: (data) => set(() => ({ playlists: data })),
   fillDetail: (data) => set(() => ({ playlistDetail: data })),
-  fillTracks: (data) => set(() => ({ playlistTracks: data })),
+  fillTracks: (data) => set(() => ({ playlistTracks: data, tracksCopy: data })),
   orderTracks: (type) => {
     switch (type) {
       case 'artist':
-        set((state) => ({
-          playlistTracks: state.playlistTracks.sort((a, b) => {
+        return set((state) => ({
+          playlistTracks: state.tracksCopy.sort((a, b) => {
             const nameA = a.artist[0].name.toUpperCase();
             const nameB = b.artist[0].name.toUpperCase();
 
@@ -27,11 +27,12 @@ export const useUserPlaylists = create((set) => ({
             return 0;
           })
         }))
-        break;
-      // case 'custom order':
-      //   set((state) => ({ playlists: state.playlistsBackup }))
-      // default:
-      //   set((state) => ({ playlists: state.playlistsBackup }))
+      case 'title':
+        return set((state) => ({ playlistTracks: state.tracksCopy.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())) }))
+      case 'album':
+        return set(state => ({ playlistTracks: state.tracksCopy.sort((a, b) => a.album.name.toLowerCase().localeCompare(b.album.name.toLowerCase())) }))
+      case 'duration':
+        return set((state) => ({ playlistTracks: state.tracksCopy.sort((a, b) => a.duration_ms - b.duration_ms) }))
     }
   }
 }))

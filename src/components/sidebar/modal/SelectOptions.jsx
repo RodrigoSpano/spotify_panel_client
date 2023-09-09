@@ -1,15 +1,15 @@
 import React from "react";
 import { Select, SelectItem } from "@nextui-org/react";
 import usePlaylistHook from "@/customHook/usePlaylistHook";
+import { useUserPlaylists } from "@/zustand/useUserPlaylists";
 
 const options = ['custom order', 'title', 'artist', 'album', 'duration']
 
 export default function SelectOptions() {
   const {handleOrderTracks} = usePlaylistHook()
 
-  const handleChange = (e) => {
-    handleOrderTracks(e.target.value)
-    console.log(e.target.value)
+  const handleChange = async (e) => {
+    await handleOrderTracks(e.target.value)
   }
 
   return (
