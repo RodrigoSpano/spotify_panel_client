@@ -1,16 +1,9 @@
 import React from "react";
 import { Select, SelectItem } from "@nextui-org/react";
-import usePlaylistHook from "@/customHook/usePlaylistHook";
 
 const options = ['custom order', 'title', 'artist', 'album', 'duration']
 
-export default function SelectOptions() {
-  const {handleOrderTracks} = usePlaylistHook()
-
-  const handleChange = async (e) => {
-    await handleOrderTracks(e.target.value)
-    console.log(e.target.value)
-  }
+export default function SelectOptions({handleOrder}) {
 
   return (
     <Select
@@ -18,10 +11,10 @@ export default function SelectOptions() {
       variant="faded"
       color="success"
       className="w-[200px] dark text-white"
-      onChange={handleChange}
+      onChange={(e) => handleOrder(e.target.value)}
       defaultValue={'custom order'}
     >
-      {options.map((item, i) =>  <SelectItem key={item}>{item}</SelectItem>)}
+      {options.map((item, i) =>  <SelectItem key={item} variant="shadow" className="dark" >{item}</SelectItem>)}
     </Select>
   );
 }
