@@ -33,6 +33,8 @@ export const useUserPlaylists = create((set) => ({
         return set(state => ({ playlistTracks: state.tracksCopy.sort((a, b) => a.album.name.toLowerCase().localeCompare(b.album.name.toLowerCase())) }))
       case 'duration':
         return set((state) => ({ playlistTracks: state.tracksCopy.sort((a, b) => a.duration_ms - b.duration_ms) }))
+      case 'custom order':
+        return set((state) => ({ playlistTracks: [...state.tracksCopy] }));
     }
   }
 }))

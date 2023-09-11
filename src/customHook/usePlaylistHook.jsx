@@ -1,7 +1,7 @@
 'use client'
 import { getPlaylistTracks } from '@/utils/requests/playlistReq'
 import { useUserPlaylists } from '@/zustand/useUserPlaylists'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useCookies } from 'react-cookie'
 
 const usePlaylistHook = () => {
